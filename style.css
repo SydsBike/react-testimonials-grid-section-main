@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary-bg-color: hsl(210, 46%, 95%);
+  --primary-moderate-violet: hsl(263, 55%, 52%);
+  --border-violet: hsl(264, 82%, 70%);
+  --primary-dark-grayish-blue: hsl(217, 19%, 35%);
+  --primary-dark-grayish-blue-50: hsl(217, 19%, 35%, 0.5);
+  --primary-dark-grayish-blue-70: hsl(217, 19%, 35%, 0.7);
+  --primary-dark-blackish-blue: hsl(219, 29%, 14%);
+  --primary-dark-blackish-blue-50: hsl(219, 29%, 14%, 0.5);
+  --primary-dark-blackish-blue-70: hsl(219, 29%, 14%, 0.7);
+  --primary-white: hsl(0, 0%, 100%);
+  --primary-white-50: hsl(0, 0%, 100%, 0.5);
+  --primary-white-70: hsl(0, 0%, 100%, 0.7);
+
+  --neutral-light-gray: hsl(0, 0%, 81%);
+  --neutral-light-grayish-blue: hsl(210, 46%, 95%);
+
+  --ff-main: "Barlow Semi Condensed", serif;
+
+  --fs-200: 0.6875rem;
+  --fs-400: 0.8125rem;
+  --fs-600: 1.25rem;
+
+  --fw-normal: 500;
+  --fw-bold: 600;
+}
+
+/* css reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+html,
+body {
+  height: 100%;
+  line-height: 18px;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* utility classes */
+
+.fs-11 {
+  font-size: var(--fs-200);
+}
+
+.fs-20 {
+  font-size: var(--fs-600);
+  line-height: 1.3;
+}
+
+.fc-white {
+  color: var(--primary-white);
+}
+
+.fc-lt-gray {
+  color: var(--neutral-light-gray);
+}
+.op50 {
+  opacity: 0.5;
+}
+
+.op70 {
+  opacity: 0.7;
+}
+
+.bg-purple {
+  background-color: var(--primary-moderate-violet);
+}
+
+.bg-gray {
+  background-color: var(--primary-dark-grayish-blue);
+}
+
+.bg-white {
+  background-color: var(--primary-white);
+}
+
+.bg-dark {
+  background-color: var(--primary-dark-blackish-blue);
+}
+
+/* general layout */
+
+body {
+  font-family: var(--ff-main);
+  font-weight: var(--fw-normal);
+  background-color: var(--neutral-light-grayish-blue);
+  display: grid;
+  place-items: center;
+}
+
+.main {
+  display: grid;
+  gap: 1.5rem;
+  margin: 1.5rem;
+}
+
+.card {
+  border-radius: 0.5rem;
+}
+
+.card-wrapper {
+  padding: 26px 2rem;
+}
+
+.card-wrapper > .fs-20 {
+  margin-bottom: 1rem;
+}
+
+.author {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+img:not(.quote) {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.one {
+  position: relative;
+  z-index: 1;
+}
+
+.one > .card-wrapper > .fs-20 {
+  margin-bottom: 2.5rem;
+}
+
+.quote {
+  position: absolute;
+  right: 7%;
+  z-index: -1;
+}
+
+.one > .card-wrapper > .author > img {
+  border: 2px solid var(--border-violet);
+}
+
+.four > .card-wrapper > .author > img {
+  border: 2px solid var(--primary-moderate-violet);
+}
+
+@media (min-width: 75em) {
+  .main {
+    width: 77%;
+    margin: 2rem auto;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "one one two five"
+      "three four four five";
+  }
+  .one > .card-wrapper > .fs-20 {
+    margin-bottom: 1rem;
+  }
+  .three > .card-wrapper > .fs-20 {
+    margin-bottom: 1.5rem;
+  }
+
+  .four > .card-wrapper > .fs-20 {
+    margin-bottom: 1.5rem;
+  }
+  .five > .card-wrapper > .fs-20 {
+    margin-bottom: 1.5rem;
+  }
+
+  .one {
+    grid-area: one;
+  }
+  .two {
+    grid-area: two;
+  }
+  .three {
+    grid-area: three;
+  }
+  .four {
+    grid-area: four;
+  }
+  .five {
+    grid-area: five;
+  }
+
+  .quote {
+    right: 15%;
+  }
+}
